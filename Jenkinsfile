@@ -45,7 +45,7 @@ pipeline {
             steps {
                 dir('Terraform/') {
                     echo 'Applying Terraform plan...'
-                    //sh 'terraform apply -auto-approve tfplan'
+                    sh 'terraform apply -auto-approve tfplan'
                 }
             }
         }
