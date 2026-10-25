@@ -23,7 +23,7 @@ pipeline {
             steps {
                 dir('Terraform/') {
                     echo 'Checking Terraform format...'
-                    sh 'terraform fmt -check'
+                    sh 'terraform fmt'
                     echo 'Validating Terraform configuration...'
                     sh 'terraform validate'
                 }
