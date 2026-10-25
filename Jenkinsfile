@@ -11,11 +11,19 @@ pipeline {
         stage('Terraform Initialization') {
             steps {
                 script {
-                    dir('Terraform/') {
-                        echo 'Initializing Terraform...'
-                        sh 'terraform init'
-                    }
-                }
+            dir('Terraform') {
+                echo 'Checking Terraform working directory...'
+                sh '''
+                    pwd
+                    echo "Files in current directory:"
+                    ls -la
+                    echo "Terraform files:"
+                    find . -maxdepth 3 -type f
+                '''
+
+                echo 'Initializing Terraform...'
+                sh 'terraform init'
+            }
             }
         }
 
