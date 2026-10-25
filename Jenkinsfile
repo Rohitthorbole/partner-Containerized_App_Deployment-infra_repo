@@ -32,5 +32,29 @@ pipeline {
                 }
             }
         }
+
+        // Stage for Terraform Plan
+        stage('Terraform Plan') {
+            steps {
+                script {
+                    dir('Terraform/') {
+                        echo 'Creating Terraform plan...'
+                        sh 'terraform plan -out=tfplan'
+                    }
+                }
+            }
+        }
+
+        // Stage for Terraform Apply
+        stage('Terraform Apply') {
+            steps {
+                script {
+                    dir('Terraform/') {
+                        echo 'Applying Terraform plan...'
+                        sh 'terraform apply -auto-approve tfplan'
+                    }
+                }
+            }
+        }
     }
 }
