@@ -8,9 +8,10 @@ pipeline {
     stages {
 
         // Stage for Terraform Initialization
-        stage('Terraform Initialization') {
-            steps {
-                script {
+        
+stage('Terraform Initialization') {
+    steps {
+        script {
             dir('Terraform') {
                 echo 'Checking Terraform working directory...'
                 sh '''
@@ -24,8 +25,10 @@ pipeline {
                 echo 'Initializing Terraform...'
                 sh 'terraform init'
             }
-            }
         }
+    }
+}
+
 
         // Stage for Terraform format and validation
         stage('Terraform Format and Validation') {
