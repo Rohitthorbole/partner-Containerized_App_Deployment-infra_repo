@@ -8,9 +8,16 @@ module "vpc" {
   vpc_name = "my-vpc"
 
   //Subnets
+
+  create_public_subnet = true
+  public_subnet_cidr = ({
+    cidr_block        = "10.0.1.0/24"
+    availability_zone = "us-east-1a"
+  })
+
   create_private_subnet = true
   private_subnet_cidr = ({
-    cidr_block        = "10.0.1.0/24"
+    cidr_block        = "10.0.2.0/24"
     availability_zone = "us-east-1a"
   })
 
