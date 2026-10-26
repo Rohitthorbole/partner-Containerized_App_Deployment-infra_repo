@@ -6,8 +6,9 @@ data "aws_ssm_parameter" "ubuntu_ami" {
 # Launch Template
 resource "aws_launch_template" "my_launch_template" {
   name_prefix   = "my-launch-template-"
+  key_name      = aws_key_pair.prod_key.key_name
   image_id      = data.aws_ssm_parameter.ubuntu_ami.value
-  instance_type = "t3.micro"
+  instance_type = "t2.small"
 
   vpc_security_group_ids = [aws_security_group.app_sg.id]
 
@@ -60,7 +61,7 @@ resource "aws_autoscaling_group" "my_asg" {
   }
 
   target_group_arns = [
-    aws_lb_target_group.my_tg.arn
+    aws_lb_target_group.app_tg.arn
   ]
 
   health_check_type         = "ELB"
@@ -78,4 +79,10 @@ variable "docker_image_version" {
   description = "Version of the Docker image to be used in the application"
   type        = string
   default     = "6"
+}
+
+// Key Pair
+resource "aws_key_pair" "prod_key" {
+  key_name   = "prod-key"
+  public_key = file("~/.ssh/prod-key.pub")
 }

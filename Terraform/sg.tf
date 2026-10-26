@@ -8,7 +8,7 @@ resource "aws_security_group" "alb_sg" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["10.87.132.27/32"]
+    cidr_blocks = ["0.0.0.0/0"] //opening wide range for lab and test purposes. In production, consider restricting this to known IPs or ranges.
   }
 
   egress {
