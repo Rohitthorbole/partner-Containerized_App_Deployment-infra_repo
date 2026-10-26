@@ -1,7 +1,7 @@
 //Using a very own of mine module, created in past, to create a VPC an Subnets
 //happy that I am able to use my own modules now, 
 module "vpc" {
-  source = "git::https://github.com/Rohitthorbole/partner-devops-project02.git//terraform/modules/vpc?ref=v1.1"
+  source = "git::https://github.com/Rohitthorbole/partner-devops-project02.git//terraform/modules/vpc?ref=v2.1"
 
   //VPC 
   vpc_cidr = "10.0.0.0/16"
@@ -9,17 +9,22 @@ module "vpc" {
 
   //Subnets
 
-  create_public_subnet = true
-  public_subnet_cidr = ({
-    cidr_block        = "10.0.1.0/24"
-    availability_zone = "us-east-1a"
-  })
+  public_subnet = [
+    ({
+      cidr_block        = "10.0.1.0/24"
+      availability_zone = "us-east-1a"
+    }),
+    ({
+      cidr_block        = "10.0.2.0/24"
+      availability_zone = "us-east-1b"
+    })
+  ]
 
-  create_private_subnet = true
-  private_subnet_cidr = ({
-    cidr_block        = "10.0.2.0/24"
-    availability_zone = "us-east-1a"
-  })
-
+  private_subnet = [
+    ({
+      cidr_block        = "10.0.3.0/24"
+      availability_zone = "us-east-1a"
+    })
+  ]
   create_nat_gateway = true
 }
