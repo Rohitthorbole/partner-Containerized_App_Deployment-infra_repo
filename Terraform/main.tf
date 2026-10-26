@@ -10,7 +10,6 @@ terraform {
     bucket         = "partner-containerized-app-deployment-terraform-state"
     key            = "terraform.tfstate"
     region         = "us-east-1"
-    profile        = "partner"
     encrypt        = true
     dynamodb_table = "terraform-lock-table"
   }
