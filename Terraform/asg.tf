@@ -78,5 +78,5 @@ resource "aws_autoscaling_group" "my_asg" {
 variable "docker_image_version" {
   description = "Version of the Docker image to be used in the application"
   type        = string
-  default     = "6"
+  default     = "7"
 }
