@@ -6,7 +6,6 @@ data "aws_ssm_parameter" "ubuntu_ami" {
 # Launch Template
 resource "aws_launch_template" "my_launch_template" {
   name_prefix   = "my-launch-template-"
-  key_name      = "prod-key" # Replace with your existing key pair name
   image_id      = data.aws_ssm_parameter.ubuntu_ami.value
   instance_type = "t2.small"
 

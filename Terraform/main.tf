@@ -6,6 +6,14 @@ terraform {
     }
   }
   required_version = ">= 1.5.0"
+  backend "s3" {
+    bucket         = "partner-containerized-app-deployment-terraform-state"
+    key            = "terraform.tfstate"
+    region         = "us-east-1"
+    profile        = "partner"
+    encrypt        = true
+    dynamodb_table = "terraform-lock-table"
+  }
 }
 
 provider "aws" {
