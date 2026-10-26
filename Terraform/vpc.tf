@@ -1,7 +1,7 @@
 //Using a very own of mine module, created in past, to create a VPC an Subnets
 //happy that I am able to use my own modules now, 
 module "vpc" {
-  source = "git::https://github.com/Rohitthorbole/partner-devops-project02.git//terraform/modules/vpc?ref=v2.1"
+  source = "git::https://github.com/Rohitthorbole/partner-devops-project02.git//terraform/modules/vpc?ref=v2.2"
 
   //VPC 
   vpc_cidr = "10.0.0.0/16"
