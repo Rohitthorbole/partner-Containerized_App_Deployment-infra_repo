@@ -10,23 +10,14 @@ pipeline {
         // Stage for Terraform Initialization
 
         
-stage('Terraform Initialization') {
-    steps {
-        dir('Terraform') {
-            echo 'Initializing Terraform...'
-
-            sh '''
-                if [ -f terraform.tfstate ]; then
-                    echo "Local Terraform state detected. Attempting state migration..."
-                    terraform init -input=false -migrate-state -force-copy
-                else
-                    echo "No local state file found. Initializing Terraform normally..."
-                    terraform init -input=false
-                fi
-            '''
+        stage('Terraform Initialization') {
+            steps {
+                dir('Terraform/') {
+                    echo 'Creating Terraform plan...'
+                    sh 'terraform init'
+                }
+            }
         }
-    }
-}
 
 
         // Stage for Terraform format and validation
