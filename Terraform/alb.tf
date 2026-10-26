@@ -23,7 +23,7 @@ resource "aws_lb" "app_alb" {
   security_groups            = [aws_security_group.alb_sg.id]
   subnets                    = module.vpc.public_subnet_ids
   enable_deletion_protection = false
-  depends_on = [aws_lb_target_group.app_tg]
+  depends_on                 = [aws_lb_target_group.app_tg]
 }
 
 // Listener for the ALB
