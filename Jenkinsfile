@@ -13,7 +13,7 @@ pipeline {
         stage('Terraform Initialization') {
             steps {
                 dir('Terraform/') {
-                    echo 'Creating Terraform plan...'
+                    echo 'Creating Terraform plan....'
                     sh 'terraform init'
                 }
             }
