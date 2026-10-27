@@ -58,6 +58,7 @@ Docker Containers
 
 ## Repository Structure
 
+```text
 .
 ├── main.tf
 ├── providers.tf
@@ -67,7 +68,7 @@ Docker Containers
 ├── alb.tf
 ├── asg.tf
 └── README.md
-
+```
 ---
 
 ## Terraform State Management
