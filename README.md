@@ -1,5 +1,23 @@
 # Containerized Application Deployment - Infrastructure Repository
 
+# Project Status
+
+✅ Application CI/CD Completed
+
+✅ Infrastructure CI/CD Completed
+
+✅ Docker Image Versioning
+
+✅ Terraform Remote Backend
+
+✅ Launch Template Versioning
+
+✅ ASG Instance Refresh
+
+✅ Rollback Strategy Tested
+
+🚧 Next Phase: Amazon ECS
+
 ## Overview
 
 This repository provisions and manages AWS infrastructure using Terraform.
@@ -10,33 +28,33 @@ Infrastructure is deployed using Jenkins-driven CI/CD pipelines and reusable Ter
 
 ## Architecture
 
+```text
 GitHub
-↓
+   |
 Webhook
-↓
+   |
 Jenkins
-↓
+   |
 Terraform
-↓
+   |
 AWS
-
----
+```
 
 ## AWS Architecture
 
+```text
 Users
-↓
+   |
 Application Load Balancer
-↓
+   |
 Target Group
-↓
+   |
 Auto Scaling Group
-↓
+   |
 EC2 Instances
-↓
+   |
 Docker Containers
-
----
+```
 
 ## Repository Structure
 
@@ -133,6 +151,7 @@ This allows controlled upgrades and rollbacks.
 
 Deployment process:
 
+```text
 Build Image
 ↓
 Push Docker Hub
@@ -146,7 +165,7 @@ Launch Template Version Update
 ASG Instance Refresh
 ↓
 New Version Active
-
+```
 ---
 
 ## Rollback Strategy
@@ -158,13 +177,13 @@ image_version = "6"
 can be reverted to:
 
 image_version = "5"
-
+```text
 Terraform Apply
 ↓
 ASG Refresh
 ↓
 Rollback Complete
-
+```
 ---
 
 ## Technologies Used
