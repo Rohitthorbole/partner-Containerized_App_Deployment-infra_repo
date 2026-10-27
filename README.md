@@ -60,29 +60,16 @@ Docker Containers
 
 ```text
 .
-├── main.tf
-├── providers.tf
-├── variables.tf
-├── backend.tf
-├── vpc.tf
-├── alb.tf
-├── asg.tf
+├── Terraform 
+    ├── alb.tf
+    ├── asg.tf
+    ├── main.tf
+    ├── sg.tf
+    ├── vpc.tf
+├── .gitignore
+├── Jenkinsfile
 └── README.md
 ```
----
-
-## Terraform State Management
-
-Terraform State is stored remotely in:
-
-- AWS S3 Backend
-
-Benefits:
-
-- State persistence
-- Team collaboration
-- Protection against Jenkins workspace loss
-
 ---
 
 ## Module Strategy
@@ -109,6 +96,7 @@ Benefits:
 
 - VPC
 - Public Subnets
+- Private Subnets
 - Routing
 - Internet Access
 
@@ -138,11 +126,11 @@ Terraform variable controls deployed version.
 
 Example:
 
-image_version = "5"
+docker_image_version = "5"
 
 User Data:
 
-docker pull r0hit45/containerized-app:${image_version}
+docker pull r0hit45/containerized-app:${docker_image_version}
 
 This allows controlled upgrades and rollbacks.
 
@@ -173,11 +161,11 @@ New Version Active
 
 If a deployment fails:
 
-image_version = "6"
+docker_image_version = "6"
 
 can be reverted to:
 
-image_version = "5"
+docker_image_version = "5"
 ```text
 Terraform Apply
 ↓
